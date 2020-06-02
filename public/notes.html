@@ -17,8 +17,8 @@
     <a class="navbar-brand" href="/">Note Taker
     </a>
     <div class="icons">
-      <i class="fas fa-save text-light save-note"></i>
-      <i class="fas fa-pen text-light new-note"></i>
+      <i class="fas fa-save text-light save-note" id = "save-btn"></i>
+      <i class="fas fa-pen text-light new-note" id = "new-btn"></i>
     </div>
   </nav>
   <div class="container-fluid">
@@ -30,8 +30,8 @@
         </div>
       </div>
       <div class="col-8">
-        <input class="note-title" placeholder="Note Title" maxlength="28" type="text">
-        <textarea class="note-textarea" placeholder="Note Text"></textarea>
+        <input class="note-title" id = "note-title" placeholder="Note Title" maxlength="28" type="text">
+        <textarea class="note-textarea" id = "note-text" placeholder="Note Text"></textarea>
       </div>
     </div>
   </div>
@@ -39,7 +39,19 @@
   <script src="assets/js/index.js"></script>
 
   <script type = "text/javascript">
-    
+    $("#save-btn").on("click", function(event) {
+      event.preventDefault();
+      var newNote = {
+        title: $("#note-title").val(),
+        text: $("#note-text").val()
+      };
+
+      $.post("/api/notes", newNote)
+        .then(function(data) {
+          console.log("notes.html", data);
+          alert("Adding note...")
+        });
+    });
   </script>
 </body>
 

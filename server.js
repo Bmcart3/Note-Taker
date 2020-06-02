@@ -35,6 +35,14 @@ app.get("/api/notes", function(req, res) {
 });
 
 
+//To create new notes
+app.post("/api/notes", function(req, res) {
+    var newNote = req.body;
+    console.log(newNote);
+    notes.push(newNote);
+    res.json(newNote);
+})
+
 
 //Starts the server to begin listening
 //===============================================================
