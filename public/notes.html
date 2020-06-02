@@ -46,11 +46,10 @@
         text: $("#note-text").val()
       };
 
-      $.post("/api/notes", newNote)
-        .then(function(data) {
-          console.log("notes.html", data);
-          alert("Adding note...")
-        });
+      // $.post("/api/notes", newNote)
+      //   .then(function(data) {
+      //     console.log("notes.html", data);
+      //   });
     });
   </script>
 </body>
